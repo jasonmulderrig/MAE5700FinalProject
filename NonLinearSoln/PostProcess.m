@@ -13,7 +13,6 @@ gatherMat =meshStruct.gatherMat;
 nCoords   =meshStruct.nCoords;
 elYM      =meshStruct.elYM;
 elArea    =meshStruct.elArea;
-
 d         =globalSystem.d';
 
 % initialize output vectors

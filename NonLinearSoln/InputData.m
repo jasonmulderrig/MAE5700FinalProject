@@ -46,6 +46,7 @@ essBCs=[1 1 0;
 numEq=numNodes*numDOF;
 F=zeros(numEq,1);
 d=zeros(numEq,1);
+k_hat=zeros(numEq,1);
 K=zeros(numEq);
 
 % Map the applied loads to the proper location in the global force vector
@@ -58,6 +59,7 @@ for frc=1:size(appForces,1)
 end
 
 % Package variables into the output structs
+globalSystem.k_hat=k_hat;
 globalSystem.K=K;
 globalSystem.F=F;
 globalSystem.d=d;

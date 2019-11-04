@@ -11,6 +11,7 @@ elYM   =meshStruct.elYM;
 numDim =meshStruct.numDim;
 nnpe   =meshStruct.nnpe;
 
+
 gn1 = elCon(elmID,1); % Extract the global node numbers 
 gn2 = elCon(elmID,2); % for the current element
 
@@ -24,7 +25,7 @@ switch numDim % the local stiffness matrix has a different form
         a=(x2-x1)/L; % cosine of the angle of the element with the X axis
         b=(y2-y1)/L; % cosine of the angle of the element with the Y axis
         
-        const = elArea(elmID)*elYM(elmID)/(L^2); % constant coefficient for the element
+        const = elArea(elmID)*elYM(elmID)/L; % constant coefficient for the element
         % Rotation matrix for 2D elements
         Re = [a b 0 0;
               0 0 a b];
@@ -39,11 +40,10 @@ switch numDim % the local stiffness matrix has a different form
         b=(y2-y1)/L; % cosine of the angle of the element with the Y axis
         c=(z2-z1)/L; % cosine of the angle of the element with the Z axis
         % constant coefficient for the element
-        const = elArea(elmID)*elYM(elmID)/(L^2); 
+        const = elArea(elmID)*elYM(elmID)/L; 
         % Stiffness matrix for 3D truss element in the global coordinate
         % system
         Re = [a b c 0 0 0; 
               0 0 0 a b c]; 
-        K_elem = const*Re'*[1 -1; -1 1]*Re;
-        k_hat_elem = Re'*[-1; 1];
+        K_elem = const*Re'*[1 -1; -1 1]*Re; 
 end

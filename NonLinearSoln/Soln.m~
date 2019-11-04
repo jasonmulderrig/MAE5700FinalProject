@@ -13,11 +13,16 @@ essBCs=boundStruct.essBCs;
 numDOF=meshStruct.numDOF;
 numEq =meshStruct.numEq;
 
-% Initial guess for {d} will be the same as initialization 
-% First calculation of residual
-res = K*d*k_hat'*d - F;
-% Iteration for Newton Raphson Method
+elArea =meshStruct.elArea;
+elYM   =meshStruct.elYM;
 
+% Extract the global node numbers for the current element
+gn1 = elCon(elmID,1); 
+gn2 = elCon(elmID,2); 
+
+ % extract the nodal coordinates for each node in the current element
+x1=nCoords(gn1,1); y1=nCoords(gn1,2);
+x2=nCoords(gn2,1); y2=nCoords(gn2,2); 
 
 % % partition the matrix K, vectors f and d first we want to find the global
 % % DOFs with essential boundary conditions
