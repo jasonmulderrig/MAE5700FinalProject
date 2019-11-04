@@ -5,9 +5,7 @@ function [globalSystem,boundStruct,meshStruct]=InputData(meshStruct)
 % TRUSS2D code. 
 % The portions of the code that might change for each new
 % problem are clearly indicated. 
-% last edit: 10 July 2015 H. Ritz
 
- 
 % unpack necessary input
 numEls=meshStruct.numEls;
 numDOF=meshStruct.numDOF;
@@ -26,9 +24,9 @@ elYM    = 2e11*ones(numEls,1);   	% Young's Modulus
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEFINE THIS FOR EACH PROBLEM
 myf=1000;
-appForces=[1 3 -myf]; % for example, appForces=[3 2 20e3]; means that 
-%            4 2 myf];  % global node number 3 has an applied load 
-%                       % in the y direction with magnitude 20e3
+% for example, appForces=[3 2 20e3]; means that global node number 3 has an
+% applied load in the y direction with magnitude 20e3
+appForces=[2 2 -myf];  
          
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,15 +34,12 @@ appForces=[1 3 -myf]; % for example, appForces=[3 2 20e3]; means that
 % number, the DOF, and the value for any essential BCs
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEFINE THIS FOR EACH PROBLEM
-essBCs=[2 1 0 ;   % for example, essBCs=[3 2 0;] means that 
-        2 2 0 ;   % global node number 3 has a required displacement  
-        2 3 0 ;   % of 0 in the y direction
-        3 1 0;
-        3 2 0;
-        3 3 0;
-        4 1 0;
-        4 2 0;
-        4 3 0];
+% for example, essBCs=[3 2 0;] means that global node number 3 has a 
+% required displacement of 0 in the y direction
+essBCs=[1 1 0;   
+        1 2 0;    
+        3 1 0;   
+        3 2 0];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % initialize global system of equations

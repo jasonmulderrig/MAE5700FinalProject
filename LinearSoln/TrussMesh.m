@@ -1,4 +1,4 @@
-function meshStruct=TrussMesh;
+function meshStruct=TrussMesh
 % meshStruct=TRUSSMESH
 % This file defines the geometry for the TRUSS2D3D code. User must input the
 % nodal coordinates and the connectivity array.
@@ -6,8 +6,6 @@ function meshStruct=TrussMesh;
 % clearly indicated. The output from this function is meshStruct which has
 % all of the mesh information, as detailed in the help documentation for
 % Truss2D.
-
-% last edit: 30 July 2015 H. Ritz
 
 % some information about the types of elements
 nnpe=2;   % number of nodes per element. define this variable since it will 
@@ -18,24 +16,25 @@ nnpe=2;   % number of nodes per element. define this variable since it will
 % DEFINE THIS FOR EACH PROBLEM
 % If you give an x and y coordinate, this is a 2D problem. If you give 3
 % coordinates for each node, this is a 3D problem.
-nCoords=[2 0 0; % first column is x coordinates of each node
-         0 0 1; % second column is y coordinates of each node
-         0 0 3; % third column (if present) is z coordinates of each node
-         0 2 1];
+% first column is x coordinates of each node, second column is 
+% y coordinates of each node, and third column (if present) is z 
+% coordinates of each node
+nCoords=[0 0; 
+         1 0; 
+         0 1];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     
-numNodes=size(nCoords,1); % number of nodal points in the mesh. 
-                          % does not have to be entered manually.
-numDim=size(nCoords,2); % define this variable to be able to 
-                        % change code easily for 2D or 3D problems.
+% number of nodal points in the mesh. Does not have to be entered manually.
+numNodes=size(nCoords,1); 
+% define this variable to be able to change code easily for 2D or 3D problems.
+numDim=size(nCoords,2); 
 numDOF=numDim; % number of degrees of freedom per node. 
 
 % Define the connectivity array (dimensions are numEls X nnpe)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEFINE THIS FOR EACH PROBLEM
-elCon=[1 2;  % elCon(i,j) is the global node number of the 
-       1 3;  % jth node of the ith element
-       1 4];
+% elCon(i,j) is the global node number of the jth node of the ith element
+elCon=[1 2;  
+       3 2];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 numEls=size(elCon,1); % number of elements in the mesh.
