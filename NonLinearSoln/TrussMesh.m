@@ -19,9 +19,8 @@ nnpe=2;   % number of nodes per element. define this variable since it will
 % first column is x coordinates of each node, second column is 
 % y coordinates of each node, and third column (if present) is z 
 % coordinates of each node
-nCoords=[0 0; 
-         1 0; 
-         0 1];
+% nCoords=[0 0; 1 0];
+nCoords=[0 0; 1 0; 0 1];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % number of nodal points in the mesh. Does not have to be entered manually.
 numNodes=size(nCoords,1); 
@@ -33,8 +32,8 @@ numDOF=numDim; % number of degrees of freedom per node.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEFINE THIS FOR EACH PROBLEM
 % elCon(i,j) is the global node number of the jth node of the ith element
-elCon=[1 2;  
-       3 2];
+% elCon=[1 2];
+elCon=[1 2; 3 2];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 numEls=size(elCon,1); % number of elements in the mesh.

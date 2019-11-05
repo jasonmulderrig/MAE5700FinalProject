@@ -19,7 +19,6 @@ stress    =globalSystem.stress;
 force     =globalSystem.force; 
 iter     =globalSystem.iter;  
 iter_max     =globalSystem.iter_max;  
-tol     =globalSystem.tol;  
 appForces =boundStruct.appForces;
 essBCs    =boundStruct.essBCs;
 
@@ -141,7 +140,7 @@ fprintf(FID,'%d\t%e\t%e\t%e\n',[1:numEls;stress';strain';force']);
 if iter < iter_max
     fprintf(FID,'Using a tolerance of %e, the Newton-Raphson method took %d iterations to converge to the displacement solution\n', tol, iter);
 else
-    fprintf(FID,'Using a tolerance of %e, the Newton-Raphson method did not converge to the displacement solution within the maximum limit of %d iterations\n', tol, iter_max);
+    fprintf(FID,'The Newton-Raphson method did not converge to the displacement solution within the maximum limit of %d iterations\n', iter_max);
 end
 
 

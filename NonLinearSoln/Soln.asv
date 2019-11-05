@@ -50,7 +50,6 @@ while iter < iter_max
         J_F	 = J(indF,indF); % Extract J_F matrix 
         % invert the partitioned J matrix
         J_inv_F	 = inv(J_F);
-        % update the displacement solution vector
         d(indF) = d(indF) - J_inv_F*R_F;
     end
     iter = iter+1;
@@ -66,7 +65,6 @@ reactionVec = f_int - f_ext;
 % Package variables into the output structs
 globalSystem.d=d;
 globalSystem.reactionVec=reactionVec;
-globalSystem.iter=iter;
 
 
 
