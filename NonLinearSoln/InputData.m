@@ -47,10 +47,11 @@ k_hat=zeros(numEq,1);
 K=zeros(numEq);
 
 % initialize initial displacement vector 
-d=rand(numEq,1);
+d= -1*ones(numEq,1);
+d = abs(d); % added this due to the constitutive model incorrectly 
 % initialize Newton-Raphson solver parameters
 iter_max = 50;
-tol = 1E-12;
+tol = 1E-14;
 
 % Map the applied loads to the proper location in the global force vector
 for frc=1:size(appForces,1)

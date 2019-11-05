@@ -139,9 +139,9 @@ fprintf(FID,'%d\t%e\t%e\t%e\n',[1:numEls;stress';strain';force']);
 % print the number of iterations the Newton-Raphson needed to converge to
 % the solution
 if iter < iter_max
-    fprintf(FID,'Using a tolerance of %e, the Newton-Raphson method took %d iterations to converge to the displacement solution\n', tol, iter);
+    fprintf(FID,'\n\n\tUsing a tolerance of %e, the Newton-Raphson method took %d iterations to converge to the displacement solution\n', tol, iter);
 else
-    fprintf(FID,'Using a tolerance of %e, the Newton-Raphson method did not converge to the displacement solution within the maximum limit of %d iterations\n', tol, iter_max);
+    fprintf(FID,'\n\n\tUsing a tolerance of %e, the Newton-Raphson method did not converge to the displacement solution within the maximum limit of %d iterations\n', tol, iter_max);
 end
 
 

@@ -38,7 +38,6 @@ iter = 0;
 while iter < iter_max
     R = K*d*k_hat'*d - F;
     
-    R_E = R(indE);
     R_F = R(indF);
     % check for convergence
     if max(R_F) <= tol % Newton-Raphson method converged on an individual DOF basis
