@@ -53,8 +53,5 @@ globalSystem=Soln(globalSystem,meshStruct,boundStruct);
 
 % Postprocessor Phase 
 % calculate stresses, show deformed shape, etc.
-globalSystem=PostProcess(globalSystem,meshStruct,boundStruct);
-                                                      
-                                                      
-                                                      
+globalSystem=PostProcess(globalSystem,meshStruct,boundStruct);                                 
                                                       

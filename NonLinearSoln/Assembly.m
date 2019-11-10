@@ -1,7 +1,6 @@
 function globalSystem=Assembly(globalSystem,meshStruct)
 % globalSystem=ASSEMBLY(globalSystem,meshStruct)
 % Assemble global stiffness matrix K for the TRUSS2D3D code. 
-% last edit: 30 July 2015 H. Ritz
 
 % unpack necessary inputs
 nnpe=meshStruct.nnpe;

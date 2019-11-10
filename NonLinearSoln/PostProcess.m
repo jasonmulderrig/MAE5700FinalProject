@@ -3,7 +3,6 @@ function globalSystem = PostProcess(globalSystem,meshStruct,boundStruct)
 % Calculate strains, stresses, and internal forces for each element in the
 % TRUSS2D3D problem. Plot the intial and deformed shapes of the truss. 
 % Print relevant problem data and results.
-% last edit: 30 July 2015 H. Ritz
 
 % unpack necessary input
 numEls    =meshStruct.numEls;
@@ -52,8 +51,6 @@ force=elArea.*stress; % internal element force
 globalSystem.strain=strain;
 globalSystem.stress=stress;
 globalSystem.force =force;
-
-
 
 PresentResults(globalSystem,meshStruct,boundStruct); % print out the results of the problem, including plots
 PlotTensionCompression(globalSystem,meshStruct);

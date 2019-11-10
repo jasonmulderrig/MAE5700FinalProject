@@ -26,7 +26,7 @@ elYM    = 2e11*ones(numEls,1);   	% Young's Modulus
 myf=1000;
 % for example, appForces=[3 2 20e3]; means that global node number 3 has an
 % applied load in the y direction with magnitude 20e3
-appForces=[2 2 -myf];  
+appForces=[2 1 myf];  
 % appForces=[2 1 myf];     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,7 +36,7 @@ appForces=[2 2 -myf];
 % DEFINE THIS FOR EACH PROBLEM
 % for example, essBCs=[3 2 0;] means that global node number 3 has a 
 % required displacement of 0 in the y direction
-essBCs=[1 1 0; 1 2 0; 3 1 0; 3 2 0];
+essBCs=[1 1 0; 1 2 0; 2 2 0];
 % essBCs=[1 1 0; 1 2 0; 1 2 0];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -51,7 +51,7 @@ d= -1*ones(numEq,1);
 d = abs(d); % added this due to the constitutive model incorrectly 
 % initialize Newton-Raphson solver parameters
 iter_max = 50;
-tol = 1E-14;
+tol = 1E-12;
 
 % Map the applied loads to the proper location in the global force vector
 for frc=1:size(appForces,1)

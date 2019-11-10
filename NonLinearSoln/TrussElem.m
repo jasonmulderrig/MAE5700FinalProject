@@ -1,7 +1,6 @@
 function [K_elem, k_hat_elem] = TrussElem(elmID,meshStruct)
 % localstiffnessmatrix = TrussElem(elementnumber,meshStruct)
 % generate the local stiffness matrix for use with TRUSS2D3D code.
-% last edit: 30 July 2015 H. Ritz
 
 % unpack necessary input
 elCon  =meshStruct.elCon;

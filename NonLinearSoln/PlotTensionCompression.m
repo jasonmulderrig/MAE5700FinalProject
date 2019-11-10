@@ -2,7 +2,6 @@ function PlotTensionCompression(globalSystem,meshStruct)
 % PLOTTENSIONCOMPRESSION(globalSystem,meshStruct)
 % This function makes a plot of the truss using blue for elements in
 % tension, red for elements in compression, and green for no-load members
-% last edit: 17 September 2018 H. Ritz
 
 % unpack necessary input
 numEls    =meshStruct.numEls;

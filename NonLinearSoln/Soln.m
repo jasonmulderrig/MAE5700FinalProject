@@ -2,7 +2,6 @@ function globalSystem = Soln(globalSystem,meshStruct,boundStruct)
 % globalSystem = SOLN(globalSystem,meshStruct,boundStruct)
 % Apply the essential boundary conditions and solve the global system for
 % the nodal displacements for TRUSS2D. 
-% last edit: 10 July 2015 H. Ritz
 
 % unpack necessary input
 K=globalSystem.K;
@@ -24,9 +23,9 @@ for ebc=1:numEBC
     % boundary conditions
     indE(ebc)=(essBCs(ebc,1)-1)*numDOF+essBCs(ebc,2); 
 end
-indF=setdiff(1:numEq,indE); % this returns the indices to the DOF that 
-                              % do NOT have essential boundary conditions
-                              % (free DOF)
+% this returns the indices to the DOF that do NOT have essential boundary 
+% conditions (free DOF)
+indF=setdiff(1:numEq,indE); 
 % impose the essential boundary conditions on the displacement solution 
 % vector for each Newton-Raphson iteration
 d(indE) = essBCs(:,3);
@@ -35,10 +34,12 @@ d(indE) = essBCs(:,3);
 % vector to the nonlinear system. Note that the initial displacement
 % solution vector will simply be the initialized zero vector.
 iter = 0;
+storeRes = []; 
 while iter < iter_max
     R = K*d*k_hat'*d - F;
     
     R_F = R(indF);
+    storeRes(iter+1) = R_F;
     % check for convergence
     if max(R_F) <= tol % Newton-Raphson method converged on an individual DOF basis
         break;
@@ -66,9 +67,4 @@ reactionVec = f_int - f_ext;
 globalSystem.d=d;
 globalSystem.reactionVec=reactionVec;
 globalSystem.iter=iter;
-
-
-
-
-
-
+globalSystem.storeRes = storeRes; 
