@@ -1,7 +1,7 @@
-function globalSystem = Soln(globalSystem,meshStruct,boundStruct)
 % globalSystem = SOLN(globalSystem,meshStruct,boundStruct)
 % Apply the essential boundary conditions and solve the global system for
 % the nodal displacements for TRUSS2D. 
+function globalSystem = Soln(globalSystem,meshStruct,boundStruct)
 
 % unpack necessary input
 K=globalSystem.K;
@@ -34,11 +34,12 @@ d(indE) = essBCs(:,3);
 % vector to the nonlinear system. Note that the initial displacement
 % solution vector will simply be the initialized zero vector.
 iter = 0;
+% Array to store residual values for output in PresentResults.m
 storeRes = []; 
 while iter < iter_max
     R = K*d*k_hat'*d - F;
-    
     R_F = R(indF);
+    % Store residual values 
     storeRes(iter+1) = R_F;
     % check for convergence
     if max(R_F) <= tol % Newton-Raphson method converged on an individual DOF basis
@@ -57,7 +58,6 @@ while iter < iter_max
 end   
 
 F_int = K*d*k_hat'*d;
-
 f_int = F_int(indE);
 f_ext = F(indE);
 

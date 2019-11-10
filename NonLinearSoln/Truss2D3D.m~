@@ -1,5 +1,5 @@
 % TRUSS2D3D
-% Finite Element code for solving non-linear 2D or 3D truss problems.
+% Finite Element code for solving 2D or 3D truss problems.
 % This program is adapted from one provided on the Student Companion
 % Website for "A First Course in Finite Elements" by Fish and Belytschko. 
 %
@@ -27,11 +27,14 @@
 % globalSystem.stress      % stress in each element
 % globalSystem.force       % internal force in each element
 % globalSystem.iter        
-% globalSystem.iter_max    % Maximum amount of iterations for the Newton-Raphson Method
-% globalSystem.storeRes    % array of residual calculations
+% globalSystem.iter_max
+% globalSystem.storeRes 
 
-% boundStruct.essBCs       % information about essential BCs
-% boundStruct.appForces    % information about applied forces
+% boundStruct.essBCs    % information about essential BCs
+% boundStruct.appForces % information about applied forces
+
+
+% last edit: 15 September 2017 H. Ritz
 
 % Preliminary steps
 home; clear; close all;  % clean the workspace

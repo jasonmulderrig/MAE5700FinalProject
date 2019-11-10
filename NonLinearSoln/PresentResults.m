@@ -1,6 +1,6 @@
-function PresentResults(globalSystem,meshStruct,boundStruct)
 % PresentResults(globalSystem,meshStruct,boundStruct)
 % Print relevant problem data and results for TRUSS2D.
+function PresentResults(globalSystem,meshStruct,boundStruct)
 
 % unpack necessary input
 numEls    =meshStruct.numEls;
@@ -144,7 +144,7 @@ else
     fprintf(FID,'\n\n\tUsing a tolerance of %e, the Newton-Raphson method did not converge to the displacement solution within the maximum limit of %d iterations\n', tol, iter_max);
 end
 
-% Print the residual
+% Print the residual 
 for i = 1:length(storeRes)
     fprintf(FID,'\n\tIteration Number %.0f: %d',i,storeRes(i))
 end
