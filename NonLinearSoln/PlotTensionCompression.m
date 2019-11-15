@@ -81,3 +81,5 @@ end
 % label the plot
 title('Stress Sense');
 axis equal
+
+

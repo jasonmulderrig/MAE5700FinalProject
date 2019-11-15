@@ -45,6 +45,7 @@ switch numDim % post process differently, depending on spatial dimensions
 end
 strain=sum(operator.*d(gatherMat),2)./L;   % element strain
 stress=elYM.*strain.^2;  % element stress
+stress(strain<0) = -1*stress(strain<0);
 force=elArea.*stress; % internal element force
 
 % Package variables into the output structs

@@ -33,22 +33,23 @@ d(indE) = essBCs(:,3);
 % Use the Newton-Raphson method to determine the displacement solution
 % vector to the nonlinear system. Note that the initial displacement
 % solution vector will simply be the initialized zero vector.
-iter = 0;
+iter = 1;
 % Array to store residual values for output in PresentResults.m
 storeRes = []; 
 while iter < iter_max
+    % calculate the residual
     R = K*d*k_hat'*d - F;
+    % partition the residual
     R_F = R(indF);
     % Store residual values 
-    storeRes(iter+1) = R_F;
-    % check for convergence
+    storeRes(iter) = max(R_F);
     if max(R_F) <= tol % Newton-Raphson method converged on an individual DOF basis
         break;
     else % Newton-Raphson method did not converge on an individual DOF basis
         % calculate the Jacobian of the residual
         J = K*(k_hat'*d) + K*(d*k_hat');
         % partition the J matrix
-        J_F	 = J(indF,indF); % Extract J_F matrix 
+        J_F	 = J(indF,indF); % Extract J_F matrix
         % invert the partitioned J matrix
         J_inv_F	 = inv(J_F);
         % update the displacement solution vector
