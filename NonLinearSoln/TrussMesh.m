@@ -33,7 +33,7 @@ numDOF=numDim; % number of degrees of freedom per node.
 % elCon(i,j) is the global node number of the jth node of the ith element
 %elCon=[1 2];
 %elCon=[1 2; 3 2];
-elCon=[1 2; 2 3; 3 4; 2 4; 1 4];
+elCon=[1 2; 2 3; 2 4];
 
 %%
 % number of elements in the mesh. does not have to be entered manually.
