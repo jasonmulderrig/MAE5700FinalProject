@@ -82,7 +82,7 @@ switch numDim
 end
 axis equal
 % label the plot
-title('Truss Plot');
+title('Truss Deformation Plot');
 legend('Initial',['Deformed (',num2str(magFac),'X)'])
 % Print problem input and results
 FID=1; % FID=1 prints to the screen. 
@@ -155,6 +155,6 @@ set(fighand,'defaultAxesFontSize',24)
 set(fighand,'defaultAxesFontWeight','bold')
 semilogy(storeRes);
 xlim([1,length(storeRes)]);
-xlabel('iteration number');
-ylabel('$max(\tilde{R}_F)$','interpreter','latex');
+xlabel('Iteration Number', 'interpreter', 'latex');
+ylabel('Maximum Residual $(\tilde{R}_F)$','interpreter','latex');
 title('Convergence behavior of $\tilde{R}_F$','interpreter','latex');
