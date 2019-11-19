@@ -155,6 +155,6 @@ set(fighand,'defaultAxesFontSize',24)
 set(fighand,'defaultAxesFontWeight','bold')
 semilogy(storeRes,'-*');
 xlim([1,length(storeRes)]);
-xlabel('iteration number');
+xlabel('iteration number','interpreter','latex');
 ylabel('$max(\tilde{R}_F)$','interpreter','latex');
 title('Convergence behavior of $\tilde{R}_F$','interpreter','latex');
