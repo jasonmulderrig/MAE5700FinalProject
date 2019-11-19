@@ -144,17 +144,17 @@ else
     fprintf(FID,'\n\n\tUsing a tolerance of %e, the Newton-Raphson method did not converge to the displacement solution within the maximum limit of %d iterations\n', tol, iter_max);
 end
 
-% Print and plot the residual 
+% Print and plot the residual
 for i = 1:length(storeRes)
-    fprintf(FID,'\n\tIteration Number %.0f: %d',i,storeRes(i));
+    fprintf(FID,'\n\tMaximum value of the residual for iteration number %.0f: %d',i,storeRes(i));
 end
 fighand=figure;
 set(fighand,'defaultLineLineWidth',3)
 set(fighand,'defaultTextFontSize',24)
 set(fighand,'defaultAxesFontSize',24)
 set(fighand,'defaultAxesFontWeight','bold')
-semilogy(storeRes);
+semilogy(storeRes,'-*');
 xlim([1,length(storeRes)]);
-xlabel('Iteration Number', 'interpreter', 'latex');
-ylabel('Maximum Residual $(\tilde{R}_F)$','interpreter','latex');
+xlabel('iteration number');
+ylabel('$max(\tilde{R}_F)$','interpreter','latex');
 title('Convergence behavior of $\tilde{R}_F$','interpreter','latex');
