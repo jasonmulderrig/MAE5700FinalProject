@@ -19,9 +19,10 @@ nnpe=2;
 % first column is x coordinates of each node, second column is 
 % y coordinates of each node, and third column (if present) is z 
 % coordinates of each node
-% nCoords=[0 0; 1 0];
+nCoords=[0 0; 1 0];
 % nCoords=[0 0; 1 0; 0 1];
-nCoords=[1 0 0; 1 1 0; 0 1 0; 0 0 1];
+% nCoords=[1 0 0; 1 1 0; 0 1 0; 0 0 1];
+
 % number of nodal points in the mesh. Does not have to be entered manually.
 numNodes=size(nCoords,1); 
 % define this variable to be able to change code easily for 2D or 3D problems.
@@ -31,9 +32,9 @@ numDOF=numDim; % number of degrees of freedom per node.
 %% Define the connectivity array (DEFINE THIS FOR EACH PROBLEM)
 % dimensions are numEls X nnpe
 % elCon(i,j) is the global node number of the jth node of the ith element
-% elCon=[1 2];
+elCon=[1 2];
 % elCon=[1 2; 3 2];
-elCon=[1 2; 2 3; 2 4];
+% elCon=[1 2; 2 3; 2 4];
 
 %%
 % number of elements in the mesh. does not have to be entered manually.
