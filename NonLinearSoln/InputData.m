@@ -24,7 +24,7 @@ appF=1000;
 % applied load in the y direction with magnitude 20e3
 % appForces=[2 1 appF]; 
 % appForces=[2 2 -appF];  
-appForces = [3 3 -appF];
+appForces = [2 3 -appF];
 %% Prescribed displacement boundary conditions (DEFINE THIS FOR EACH PROBLEM)
 % Each row is the global node number, the DOF, and the value for any
 % essential BCs. for example, essBCs=[3 2 0;] means that global node number 3 has a 

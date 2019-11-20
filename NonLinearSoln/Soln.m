@@ -42,14 +42,17 @@ while iter < iter_max
     % partition the residual
     R_F = R(indF);
     % Store residual values 
-    storeRes(iter) = max(R_F);
-    if max(R_F) <= tol % Newton-Raphson method converged on an individual DOF basis
+    storeRes(iter) = max(abs(R_F));
+    if max(abs(R_F)) <= tol % Newton-Raphson method converged on an individual DOF basis
         break;
     else % Newton-Raphson method did not converge on an individual DOF basis
         % calculate the Jacobian of the residual
         J = K*(k_hat'*d) + K*(d*k_hat');
         % partition the J matrix
         J_F	 = J(indF,indF); % Extract J_F matrix
+        if (J_F == zeros(size(J_F,1),size(J_F,2)))
+            error('Define a new initial guess for the displacements so that the Jacobian is not zero');
+        end
         % invert the partitioned J matrix
         J_inv_F	 = inv(J_F);
         % update the displacement solution vector
