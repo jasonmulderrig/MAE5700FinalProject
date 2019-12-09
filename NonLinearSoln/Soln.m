@@ -37,11 +37,11 @@ iter = 1;
 % Array to store residual values for output in PresentResults.m
 storeRes = []; 
 while iter < iter_max
-    % calculate the residual
-    R = K*d*k_hat'*d - F;
-    % partition the residual
+    % Calculate the residual
+    R = K*(d*(k_hat'*d)) - F;
+    % Partition the residual
     R_F = R(indF);
-    % Store residual values 
+    % Store the maximum magnitude of the residual values 
     storeRes(iter) = max(abs(R_F));
     if max(abs(R_F)) <= tol % Newton-Raphson method converged on an individual DOF basis
         break;
@@ -61,7 +61,7 @@ while iter < iter_max
     iter = iter+1;
 end   
 
-F_int = K*d*k_hat'*d;
+F_int = K*(d*(k_hat'*d));
 f_int = F_int(indE);
 f_ext = F(indE);
 

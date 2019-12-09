@@ -22,17 +22,20 @@ elYM    = 2e11*ones(numEls,1);   	% Young's Modulus
 appF=1000;
 % for example, appForces=[3 2 20e3]; means that global node number 3 has an
 % applied load in the y direction with magnitude 20e3
-appForces=[2 1 appF]; 
+% appForces=[2 1 appF]; 
 % appForces=[2 2 -appF];  
 % appForces = [2 3 -appF];
+
+appForces=[2 2 -appF];
+
 %% Prescribed displacement boundary conditions (DEFINE THIS FOR EACH PROBLEM)
 % Each row is the global node number, the DOF, and the value for any
 % essential BCs. for example, essBCs=[3 2 0;] means that global node number 3 has a 
 % required displacement of 0 in the y direction
-essBCs=[1 1 0; 1 2 0; 2 2 0];
+% essBCs=[1 1 0; 1 2 0; 2 2 0];
 % essBCs=[1 1 0; 1 2 0; 3 1 0; 3 2 0];
 % essBCs=[1 1 0; 1 2 0; 1 3 0; 3 1 0; 3 2 0; 3 3 0; 4 1 0; 4 2 0; 4 3 0];
-
+essBCs=[1 1 0; 1 2 0; 2 1 0; 3 1 0; 3 2 0; 4 1 0; 4 2 0];
 % initialize global system of equations
 numEq=numNodes*numDOF;
 F=zeros(numEq,1);
@@ -43,7 +46,8 @@ K=zeros(numEq);
 % NOTE: in order for the Newton-Raphson method to iterate to the (one)
 % physically-sensible solution, the user needs to determine if this should
 % be a negative or positive initialization
-d= 1*ones(numEq,1);
+d= -1*ones(numEq,1);
+
 % initialize Newton-Raphson solver parameters
 iter_max = 50;
 tol = 1E-8;

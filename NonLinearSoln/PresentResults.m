@@ -156,5 +156,5 @@ set(fighand,'defaultAxesFontWeight','bold')
 semilogy(storeRes,'-*');
 xlim([1,length(storeRes)]);
 xlabel('Iteration Number','interpreter','latex');
-ylabel('Maximum Residual $(\tilde{R}_F)$','interpreter','latex');
+ylabel('Maximum Residual $\big|\tilde{R}_F\big|$','interpreter','latex');
 title('Convergence behavior of $\tilde{R}_F$','interpreter','latex');
