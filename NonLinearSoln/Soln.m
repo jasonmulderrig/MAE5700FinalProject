@@ -51,10 +51,13 @@ while iter < iter_max
         % partition the J matrix
         J_F	 = J(indF,indF); % Extract J_F matrix
         if (J_F == zeros(size(J_F,1),size(J_F,2)))
-            error('Define a new initial guess for the displacements so that the Jacobian is not zero');
+            error('The Jacobian matrix associated with the free components of the system is the zero matrix. Define a new initial guess for the displacements so that the Jacobian is not zero');
         end
         % invert the partitioned J matrix
         J_inv_F	 = inv(J_F);
+        if (any(isfinite(J_inv_F(:))) == 0)
+            error('The Jacobian matrix associated with the free components of the system is not finite at some step in the Newton-Raphson iteration scheme. Define a new initial guess for the displacements so that the Jacobian is finite');
+        end
         % update the displacement solution vector
         d(indF) = d(indF) - J_inv_F*R_F;
     end
